@@ -7,13 +7,22 @@
 <div class="row">
     <form method="post">
         <div class="text-danger" asp-validation-summary="All"></div>
+        <div class="form-group" style="display: none;" id="@typeof(IndexEntry)_Placeholder" data-index="$">
+            <label>Values[$]</label>
+            <input type="text" name="Values[$].Value" value=""/>
+            <button type="button" class="btn-sm-danger" onclick="listBinding.onRemove(this)">Remove</button>
+        </div>
         @if ( Model.Values != null ) {
-            @for ( var i = 0; i < Model.Values.Count; i++ ) {
-                <div class="form-group">
-                    <label>Values[@i]</label>
-                    <input type="text" name="Values[@i].Value" value="@Model.Values[i].Value"/>
-                </div>
-            }
+            <div class="form-group" data-collection-type="@typeof(IndexEntry)">
+                @for ( var i = 0; i < Model.Values.Count; i++ ) {
+                    <div class="form-group" data-index="@i">
+                        <label>Values[@i]</label>
+                        <input type="text" name="Values[@i].Value" value="@Model.Values[i].Value"/>
+                        <button type="button" class="btn-sm-danger" onclick="listBinding.onRemove(this)">Remove</button>
+                    </div>
+                }
+                <button type="button" class="btn-sm" onclick="listBinding.onAdd(this)">Add</button>
+            </div>
         }
         <input type="submit" value="Post"/>
     </form>
