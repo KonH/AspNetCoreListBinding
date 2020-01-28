@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+	"noEmitOnError": true,
+	"noImplicitAny": true,
+	"target": "es6",
+	"sourceMap": true,
+	"outFile": "./wwwroot/js/custom.js"
+  },
+  "include": [
+	"./scripts/**/*.ts"
+  ],
+  "exclude": [
+	"node_modules"
+  ],
+  "compileOnSave": true
+}

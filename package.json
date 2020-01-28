@@ -1,0 +1,13 @@
+{
+  "name": "asp.net.core.list.binding",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "build-ts": "tsc"
+  },
+  "private": true,
+  "devDependencies": {},
+  "dependencies": {
+    "typescript": "3.7.5"
+  }
+}
