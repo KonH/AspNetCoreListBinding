@@ -1,6 +1,4 @@
-using System;
-
-namespace AspNetCoreListBinding.Models {
+namespace AspNetCoreListBinding.ViewModels {
 	public class ErrorViewModel {
 		public string RequestId { get; set; }
 

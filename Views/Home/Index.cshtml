@@ -1,8 +1,20 @@
-﻿@{
+﻿@model IndexViewModel
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="row">
+    <form method="post">
+        <div class="text-danger" asp-validation-summary="All"></div>
+        @if ( Model.Values != null ) {
+            @for ( var i = 0; i < Model.Values.Count; i++ ) {
+                <div class="form-group">
+                    <label>Values[@i]</label>
+                    <input type="text" name="Values[@i].Value" value="@Model.Values[i].Value"/>
+                </div>
+            }
+        }
+        <input type="submit" value="Post"/>
+    </form>
 </div>

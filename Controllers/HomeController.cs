@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using AspNetCoreListBinding.Models;
+using AspNetCoreListBinding.ViewModels;
 
 namespace AspNetCoreListBinding.Controllers {
 	public class HomeController : Controller {
@@ -15,8 +15,29 @@ namespace AspNetCoreListBinding.Controllers {
 			_logger = logger;
 		}
 
+		[HttpGet]
 		public IActionResult Index() {
-			return View();
+			var values = new List<IndexEntry> {
+				new IndexEntry {
+					Value = "Value"
+				}
+			};
+			return View(new IndexViewModel {
+				Values = values
+			});
+		}
+
+		[HttpPost]
+		public IActionResult Index(IndexViewModel viewModel) {
+			if ( !ModelState.IsValid ) {
+				_logger.LogWarning("Model state is invalid");
+				return View(viewModel);
+			}
+			_logger.LogInformation($"Values.Count: {viewModel.Values.Count}");
+			foreach ( var value in viewModel.Values ) {
+				_logger.LogInformation($"'{value.Value}'");
+			}
+			return View(viewModel);
 		}
 
 		public IActionResult Privacy() {
