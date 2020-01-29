@@ -72,7 +72,11 @@ class ListBinding {
 		if (indexStr == null) {
 			return null;
 		}
-		return Number.parseInt(indexStr);
+		const index = Number.parseInt(indexStr);
+		if (Number.isNaN(index)) {
+			return null;
+		}
+		return index;
 	}
 
 	clonePlaceholder(placeholderElement: HTMLElement): HTMLElement {
