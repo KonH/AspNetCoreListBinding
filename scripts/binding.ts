@@ -61,6 +61,9 @@ class ListBinding {
 			}
 			indexes.push(index);
 		}
+		if (indexes.length == 0) {
+			return -1;
+		}
 		return Math.max.apply(null, indexes);
 	}
 
